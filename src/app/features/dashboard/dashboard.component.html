@@ -1,0 +1,32 @@
+<div class="container my-4">
+  <!-- Search bar -->
+  <div class="row mb-3">
+    <div class="col-12">
+    <app-search-bar (assetSelected)="addAsset($event)"></app-search-bar>
+  </div>
+</div>
+    <div class="time-range-selector">
+      <button (click)="changeTimeRange(7)">7 Days</button>
+      <button (click)="changeTimeRange(30)">30 Days</button>
+      <button (click)="changeTimeRange(180)">6 Months</button>
+      <button (click)="changeTimeRange(365)">1 Year</button>
+    </div>
+  <!-- Comparison Table -->
+  <div class="row mb-4">
+    <div class="col-12">
+    <app-comparison-table
+      [assets]="selectedAssets"
+      (removeAsset)="removeAsset($event)">
+    </app-comparison-table>
+  </div>
+</div>
+ <!-- Chart Panel -->
+ <div class="row">
+  <div class="col-12">
+    <app-chart-panel
+      [assets]="selectedAssets"
+      [days]="timeRange">
+    </app-chart-panel>
+  </div>
+</div>
+</div>

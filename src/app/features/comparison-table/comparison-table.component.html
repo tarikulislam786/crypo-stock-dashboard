@@ -1,0 +1,38 @@
+<!-- <div class="comparison-table" *ngIf="assets.length">
+    <div *ngFor="let asset of assets" class="asset-card">
+      <h3>{{ asset.name }} ({{ asset.symbol }})</h3>
+      <p>Price: {{ asset.current_price | currency }}</p>
+      <p>Market Cap: {{ asset.market_cap | currency }}</p>
+      <button (click)="remove(asset)">Remove</button>
+    </div>
+  </div>
+   -->
+
+
+
+  <!-- comparison-table.component.html -->
+<div *ngIf="assets.length" class="table-responsive comparison-table">
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Market Cap</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let asset of assets">
+        <td>{{ asset.name }}</td>
+        <td>{{ asset.current_price | currency:'USD':'symbol' }}</td>
+        <td>{{ asset.market_cap | currency:'USD':'symbol' }}</td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="remove(asset)">X</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="!assets.length" class="text-center text-muted">
+  No assets selected for comparison.
+</div>
